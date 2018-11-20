@@ -14,22 +14,32 @@ public class preguntas : MonoBehaviour {
 
 	public Text respuesta;
 
+	public Text txtpuntos;
+	public Text txtnegativos;
+
+	public int puntos;
+	public int negativos;
+	public int numPregunta = 0;
+	public int rta;
+
 	//Opciones de respuesta
 	public GameObject rA;
 	public GameObject rB;
 	public GameObject rC;
-	public GameObject rD;
+	public GameObject rD;	
 
-	public int numPregunta = 0;
-	public int rta;
-
-	public GameObject btn_jugar; //inicia el juego
-	public GameObject btnGracias; //terminar llamada
 	public GameObject panelLlamada;
+
+	public GameObject msjOk;
+	public GameObject msjBad;
+
+	public GameObject b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16;
 
 	// Use this for initialization
 	void Start () {
 		panelLlamada.SetActive(false);
+		msjBad.SetActive(false);
+		msjOk.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -40,9 +50,24 @@ public class preguntas : MonoBehaviour {
 
 	public void contadorPregunta(){
 		numPregunta++;
+		msjBad.SetActive(false);
+		msjOk.SetActive(false);
+		rta = 0;
+	}
+
+	public void iniciarPregunta(){
+		numPregunta = 1;
+		msjBad.SetActive(false);
+		msjOk.SetActive(false);
+		rta = 0;
 	}
 
 	public void iniciarJuego(){
+		rA.SetActive(true);
+		rB.SetActive(true);
+		rC.SetActive(true);
+		rD.SetActive(true);
+
 		if(numPregunta == 1){
 			pregunta.text = "¿CUÁL DE LAS SIGUIENTES OPCIONES NO SE CUMPLE COMO REQUISITO \nPARA SER PARTIDOR?";
 			A.text = "Persona plenamente capaz";
@@ -51,8 +76,6 @@ public class preguntas : MonoBehaviour {
 			D.text = "Persona natural";
 
 			pregunta.fontSize = 30;
-
-						
 
 		}else if(numPregunta == 2){
 			pregunta.text = "EN CASO DE QUE EL PARTIDOR INCURRA EN PREVARICACIÓN Y QUE ESTÁ SEA\n DECLARADA POR EL JUEZ COMPETENTE ¿CUÁL DE LAS SIGUIENTES OPCIONES\n EL JUEZ NO PODRÍA IMPONER COMO SANCIÓN?";
@@ -220,41 +243,298 @@ public class preguntas : MonoBehaviour {
 
 
 	public void validarRespuesta(){
-		if(numPregunta == 1 && rta == 3){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 2 && rta == 1){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 3 && rta == 4){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 4 && rta == 2){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 5 && rta == 1){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 6 && rta == 3){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 7 && rta == 1){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 8 && rta == 4){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 9 && rta == 2){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 10 && rta == 4){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 11 && rta == 1){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 12 && rta == 1){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 13 && rta == 4){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 14 && rta == 1){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 15 && rta == 3){
-			Debug.Log("Bien!");
-		}else if(numPregunta == 16 && rta == 2){
-			Debug.Log("Bien!");
-		}				
-	}
 
+		if(numPregunta == 1){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 3){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(true);
+				rD.SetActive(false);
+				puntos++;
+			}else if(rta != 3){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(true);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 2){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 1){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 1){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 3){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 4){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}else if(rta != 4){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}
+		}else if(numPregunta == 4){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 2){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(true);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 2){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(true);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 5){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 1){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 1){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 6){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 3){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(true);
+				rD.SetActive(false);
+			}else if(rta != 3){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(true);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 7){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 1){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 1){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 8){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 4){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}else if(rta != 4){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}
+		}else if(numPregunta == 9){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 2){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(true);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 2){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(true);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 10){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 4){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}else if(rta != 4){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}
+		}else if(numPregunta == 11){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 1){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 1){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 12){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 1){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 1){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 13){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 4){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}else if(rta != 4){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(true);
+			}
+		}else if(numPregunta == 14){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 1){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(true);
+				rB.SetActive(false);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 1){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(true);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 15){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 3){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(true);
+				rD.SetActive(false);
+			}else if(rta != 3){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(false);
+				rC.SetActive(true);
+				rD.SetActive(false);
+			}
+		}else if(numPregunta == 16){
+			if(rta == 0){
+				Debug.Log("soy cero");
+			}else if(rta == 2){
+				Debug.Log("Bien!");
+				msjOk.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(true);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}else if(rta != 2){
+				Debug.Log("Mal!");
+				msjBad.SetActive(true);
+				rA.SetActive(false);
+				rB.SetActive(true);
+				rC.SetActive(false);
+				rD.SetActive(false);
+			}
+		}
+	}
 
 	public void respuestaA(){
 		rta = 1;
@@ -276,6 +556,7 @@ public class preguntas : MonoBehaviour {
 		if(numPregunta == 1){
 			rA.SetActive(false);
 			rB.SetActive(false);
+			Debug.Log("Hola!");
 
 		}else if(numPregunta == 2){
 			rB.SetActive(false);
@@ -408,6 +689,11 @@ public class preguntas : MonoBehaviour {
 
 	public void terminarLlamada(){
 		panelLlamada.SetActive(false);
+	}
+
+	public void puntuacion(){
+		puntos = puntos + 1;
+		txtpuntos.text = ""+puntos;
 	}
 
 

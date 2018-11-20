@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 370e4ab1f230f624eb4a5713bce0c582
+timeCreated: 1542682188
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Stempel Schneidler Std
+  fontNames:
+  - Stempel Schneidler Std
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
