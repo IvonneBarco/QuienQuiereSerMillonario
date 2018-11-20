@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "d:\\Documentos\\Trabajos\\Juego\\QuienQuiereSerMillonario2D\\Assembly-CSharp.csproj",
+  "TargetFramework": "v3.5",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
