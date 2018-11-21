@@ -71,6 +71,10 @@ public class preguntas : MonoBehaviour {
 		rB.SetActive(true);
 		rC.SetActive(true);
 		rD.SetActive(true);
+
+		if(numPregunta >=16){
+			numPregunta = 16;
+		}
 	}
 
 	public void iniciarPregunta(){
