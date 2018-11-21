@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class preguntas : MonoBehaviour {
 
@@ -35,11 +37,22 @@ public class preguntas : MonoBehaviour {
 
 	public GameObject b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16;
 
+	public GameObject objAa, objAm, objAb, objBa, objBm, objBb, objCa, objCm, objCb, objDa, objDm, objDb, estadistica;
+	
+	public GameObject iconCincuenta, iconLlamada, iconPublico, iconCincuentax, iconLlamadax, iconPublicox;
+
+	public bool opcLlamada = true;
+	public bool opcPublico = true;
+	public bool opcCincuenta = true;
 	// Use this for initialization
 	void Start () {
 		panelLlamada.SetActive(false);
 		msjBad.SetActive(false);
 		msjOk.SetActive(false);
+
+		iconCincuenta.SetActive(false);
+		iconLlamada.SetActive(false);
+		iconPublico.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -53,6 +66,11 @@ public class preguntas : MonoBehaviour {
 		msjBad.SetActive(false);
 		msjOk.SetActive(false);
 		rta = 0;
+
+		rA.SetActive(true);
+		rB.SetActive(true);
+		rC.SetActive(true);
+		rD.SetActive(true);
 	}
 
 	public void iniciarPregunta(){
@@ -60,13 +78,22 @@ public class preguntas : MonoBehaviour {
 		msjBad.SetActive(false);
 		msjOk.SetActive(false);
 		rta = 0;
-	}
 
-	public void iniciarJuego(){
 		rA.SetActive(true);
 		rB.SetActive(true);
 		rC.SetActive(true);
 		rD.SetActive(true);
+
+		iconCincuenta.SetActive(true);
+		iconLlamada.SetActive(true);
+		iconPublico.SetActive(true);
+
+		iconCincuentax.SetActive(false);
+		iconLlamadax.SetActive(false);
+		iconPublicox.SetActive(false);
+	}
+
+	public void iniciarJuego(){		
 
 		if(numPregunta == 1){
 			pregunta.text = "¿CUÁL DE LAS SIGUIENTES OPCIONES NO SE CUMPLE COMO REQUISITO \nPARA SER PARTIDOR?";
@@ -256,12 +283,17 @@ public class preguntas : MonoBehaviour {
 				rD.SetActive(false);
 				puntos++;
 			}else if(rta != 3){
-				Debug.Log("Mal!");
-				msjBad.SetActive(true);
-				rA.SetActive(false);
-				rB.SetActive(false);
-				rC.SetActive(true);
-				rD.SetActive(false);
+				if(opcCincuenta == false & opcLlamada == false && opcPublico == false){
+					SceneManager.LoadScene("JuegoPerdido");
+					Debug.Log("Mal!");					
+				}else{
+					Debug.Log("Mal!");
+					msjBad.SetActive(true);
+					rA.SetActive(false);
+					rB.SetActive(false);
+					rC.SetActive(true);
+					rD.SetActive(false);
+				}				
 			}
 		}else if(numPregunta == 2){
 			if(rta == 0){
@@ -274,6 +306,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 1){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(true);
@@ -292,6 +325,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(true);
 			}else if(rta != 4){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -310,6 +344,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 2){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -328,6 +363,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 1){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(true);
@@ -346,6 +382,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(true);
 				rD.SetActive(false);
 			}else if(rta != 3){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -364,6 +401,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 1){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(true);
@@ -382,6 +420,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(true);
 			}else if(rta != 4){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -400,6 +439,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 2){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -418,6 +458,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(true);
 			}else if(rta != 4){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -436,6 +477,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 1){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(true);
@@ -454,6 +496,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 1){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(true);
@@ -472,6 +515,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(true);
 			}else if(rta != 4){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -490,6 +534,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(false);
 				rD.SetActive(false);
 			}else if(rta != 1){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -508,6 +553,7 @@ public class preguntas : MonoBehaviour {
 				rC.SetActive(true);
 				rD.SetActive(false);
 			}else if(rta != 3){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -525,7 +571,10 @@ public class preguntas : MonoBehaviour {
 				rB.SetActive(true);
 				rC.SetActive(false);
 				rD.SetActive(false);
+				JuegoGanado();
+				
 			}else if(rta != 2){
+				
 				Debug.Log("Mal!");
 				msjBad.SetActive(true);
 				rA.SetActive(false);
@@ -552,13 +601,18 @@ public class preguntas : MonoBehaviour {
 		rta = 4;
 	}
 
-	public void CincuentaXcincuenta(){
+	public void cincuentaXcincuenta(){
+
+		opcCincuenta = false;
+		iconCincuenta.SetActive(false);
+		iconCincuentax.SetActive(true);
+
 		if(numPregunta == 1){
 			rA.SetActive(false);
 			rB.SetActive(false);
-			Debug.Log("Hola!");
-
-		}else if(numPregunta == 2){
+		}
+		
+		else if(numPregunta == 2){
 			rB.SetActive(false);
 			rC.SetActive(false);
 
@@ -621,6 +675,8 @@ public class preguntas : MonoBehaviour {
 	}
 
 	public void llamaAmigo(){
+		opcLlamada = false;
+
 		if(numPregunta == 1){
 			panelLlamada.SetActive(true);
 			respuesta.text = "La respuesta correcta es la\nC";
@@ -688,6 +744,8 @@ public class preguntas : MonoBehaviour {
 	}
 
 	public void terminarLlamada(){
+		iconLlamada.SetActive(false);
+		iconLlamadax.SetActive(true);
 		panelLlamada.SetActive(false);
 	}
 
@@ -697,5 +755,133 @@ public class preguntas : MonoBehaviour {
 	}
 
 
+	public void ayudaPublico(){
+
+		opcPublico = false;
+		estadistica.SetActive(true);
+
+		if(numPregunta == 1){
+			objAm.SetActive(true);
+			objBb.SetActive(true);
+			objCa.SetActive(true); //ok
+			objDb.SetActive(true);
+		}else if(numPregunta == 2){
+			objAa.SetActive(true); //ok
+			objBm.SetActive(true);
+			objCm.SetActive(true); 
+			objDb.SetActive(true);
+		}else if(numPregunta == 3){
+			objAm.SetActive(true);
+			objBb.SetActive(true);
+			objCa.SetActive(true); 
+			objDa.SetActive(true);//ok
+		}else if(numPregunta == 4){
+			objAm.SetActive(true);
+			objBa.SetActive(true); //ok
+			objCm.SetActive(true);
+			objDb.SetActive(true);
+		}else if(numPregunta == 5){
+			objAa.SetActive(true);//ok
+			objBb.SetActive(true);
+			objCa.SetActive(true); 
+			objDb.SetActive(true);
+		}else if(numPregunta == 6){
+			objAm.SetActive(true);
+			objBb.SetActive(true);
+			objCa.SetActive(true); //ok
+			objDb.SetActive(true);
+		}else if(numPregunta == 7){
+			objAa.SetActive(true);//ok
+			objBb.SetActive(true);
+			objCb.SetActive(true); 
+			objDb.SetActive(true);
+		}else if(numPregunta == 8){
+			objAm.SetActive(true);
+			objBb.SetActive(true);
+			objCm.SetActive(true); 
+			objDa.SetActive(true);//ok
+		}else if(numPregunta == 9){
+			objAm.SetActive(true);
+			objBa.SetActive(true);//ok
+			objCm.SetActive(true); 
+			objDb.SetActive(true);
+		}else if(numPregunta == 10){
+			objAm.SetActive(true);
+			objBb.SetActive(true);
+			objCa.SetActive(true); 
+			objDa.SetActive(true);//ok
+		}else if(numPregunta == 11){
+			objAa.SetActive(true);//ok
+			objBm.SetActive(true);
+			objCa.SetActive(true); 
+			objDb.SetActive(true);
+		}else if(numPregunta == 12){
+			objAa.SetActive(true); //ok
+			objBb.SetActive(true);
+			objCa.SetActive(true);
+			objDb.SetActive(true);
+		}else if(numPregunta == 13){
+			objAm.SetActive(true);
+			objBm.SetActive(true);
+			objCm.SetActive(true);
+			objDa.SetActive(true); //ok
+		}else if(numPregunta == 14){
+			objAa.SetActive(true); //ok
+			objBm.SetActive(true);
+			objCa.SetActive(true);
+			objDa.SetActive(true);
+		}else if(numPregunta == 15){
+			objAa.SetActive(true);
+			objBm.SetActive(true);
+			objCa.SetActive(true); //ok
+			objDm.SetActive(true);
+		}else if(numPregunta == 16){
+			objAb.SetActive(true);
+			objBa.SetActive(true); //ok
+			objCb.SetActive(true);
+			objDb.SetActive(true);
+		} 
+	}
+
+	public void terminarPublico(){
+		iconPublico.SetActive(false);
+		iconPublicox.SetActive(true);
+		panelLlamada.SetActive(false);
+
+		objAa.SetActive(false);
+		objAm.SetActive(false);
+		objAb.SetActive(false);
+		objBa.SetActive(false);
+		objBm.SetActive(false);
+		objBb.SetActive(false);
+		objCa.SetActive(false);
+		objCm.SetActive(false);
+		objCb.SetActive(false);
+		objDa.SetActive(false);
+		objDm.SetActive(false);
+		objDb.SetActive(false);
+		estadistica.SetActive(false);
+	}
+
+	
+	/* --------------------- Navegación entre escenas --------------------- */
+	public void JuegoPerdido(){
+		SceneManager.LoadScene("JuegoPerdido");	
+	}
+
+	public void JuegoGanado(){
+		if(numPregunta == 16){
+			SceneManager.LoadScene("JuegoGanado");
+			Debug.Log("JuegoGanado");
+		}
+	}
+
+	public void Jugar(){
+		SceneManager.LoadScene("ModuloPreguntas");
+	}
+
+	public void Salir(){
+		SceneManager.LoadScene("Inicio");
+	}
 
 }

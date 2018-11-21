@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Inicio.unity
+    guid: 3171fa9a03b0a604f93b13b7c7c3b3bd
+  - enabled: 1
+    path: Assets/ModuloPreguntas.unity
+    guid: 69798d883a692ed4599b49422676af89
+  - enabled: 1
+    path: Assets/JuegoPerdido.unity
+    guid: b9ce6eb670a3c3e429068062d14700c9
+  - enabled: 1
+    path: Assets/JuegoGanado.unity
+    guid: c42884d223ab4544b9549786cef4afb3
